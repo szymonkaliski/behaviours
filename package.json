@@ -1,6 +1,12 @@
 {
+  "name": "behaviours",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Szymon Kaliski <hi@szymonkaliski.com> (http://szymonkaliski.com)",
+  "license": "MIT",
+  "description": "",
   "dependencies": {
-    "@thi.ng/vectors": "^0.2.0",
+    "@thi.ng/vectors": "^1.4.1",
     "static-kdtree": "^1.0.2"
   }
 }

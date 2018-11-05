@@ -3,7 +3,7 @@ const v = require("@thi.ng/vectors");
 
 const prop = key => o => o[key];
 
-const KNN_COUNT = 10;
+const KNN_COUNT = 5;
 
 class Behaviours {
   constructor({

@@ -22,13 +22,14 @@ const simulationStep = b.compose(
     { condition: p => !p.static },
     b.repelOthers({ maxDistance: 0.001, force: 0.002 }),
     b.attractPoint({ maxDistance: 4.0, force: 0.0005 }),
-    b.limitVelocity({ limit: 0.02 }),
+    b.limitVelocity({ limit: 0.01 }),
     b.addVelocity()
   ),
 
   b.subset(
     { condition: p => p.static, conditionOthers: false },
     b.collideOthers({
+      minDistance: 0.0002,
       maxDistance: 0.0003,
       onCollision: (a, b) => {
         if (a.static || b.static) {
@@ -52,26 +53,31 @@ canvas.style.left = 0;
 const { width, height } = canvas;
 const k = Math.min(width, height);
 
+const circle = (ctx, [x, y], r) => {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+  ctx.fill();
+};
+
 const loop = () => {
-  requestAnimationFrame(loop);
-
-  ctx.fillStyle = "#CECECE";
-  ctx.fillRect(0, 0, width, height);
-
   simulationStep(points);
+
+  ctx.fillStyle = "#EEEEEE";
+  ctx.fillRect(0, 0, width, height);
 
   for (let i = 0; i < points.length; i++) {
     const p = points[i];
 
-    ctx.fillStyle = p.static ? "#222" : "#999";
+    ctx.fillStyle = p.static ? "#333333" : "#999999";
 
-    ctx.fillRect(
-      (p.pos[0] * k) / 2 + width / 2 - 2,
-      (p.pos[1] * k) / 2 + height / 2 - 2,
-      4,
-      4
+    circle(
+      ctx,
+      [(p.pos[0] * k) / 2 + width / 2 - 2, (p.pos[1] * k) / 2 + height / 2 - 2],
+      2
     );
   }
+
+  requestAnimationFrame(loop);
 };
 
 loop();

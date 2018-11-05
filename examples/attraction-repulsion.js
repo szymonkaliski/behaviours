@@ -48,24 +48,31 @@ canvas.style.left = 0;
 const { width, height } = canvas;
 const k = Math.min(width, height);
 
+const circle = (ctx, [x, y], r) => {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, 2 * Math.PI, false);
+  ctx.fill();
+};
+
 const loop = () => {
-  requestAnimationFrame(loop);
-
-  ctx.fillStyle = "#CECECE";
-  ctx.fillRect(0, 0, width, height);
-
   simulationStep(points);
 
-  ctx.fillStyle = "#222";
+  ctx.fillStyle = "#EEEEEE";
+  ctx.fillRect(0, 0, width, height);
+
+  ctx.fillStyle = "#333333";
+
   for (let i = 0; i < points.length; i++) {
     const p = points[i];
-    ctx.fillRect(
-      (p.pos[0] * k) / 2 + width / 2 - 2,
-      (p.pos[1] * k) / 2 + height / 2 - 2,
-      4,
-      4
+
+    circle(
+      ctx,
+      [(p.pos[0] * k) / 2 + width / 2 - 2, (p.pos[1] * k) / 2 + height / 2 - 2],
+      2
     );
   }
+
+  requestAnimationFrame(loop);
 };
 
 loop();
