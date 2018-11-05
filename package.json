@@ -4,7 +4,7 @@
   "main": "index.js",
   "author": "Szymon Kaliski <hi@szymonkaliski.com> (http://szymonkaliski.com)",
   "license": "MIT",
-  "description": "",
+  "description": "declarative library for describing behaviours",
   "dependencies": {
     "@thi.ng/vectors": "^1.4.1",
     "static-kdtree": "^1.0.2"
