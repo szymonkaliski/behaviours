@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@thi.ng/vectors": "^0.2.0",
+    "static-kdtree": "^1.0.2"
+  }
+}
