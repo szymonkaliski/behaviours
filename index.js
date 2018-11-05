@@ -58,7 +58,7 @@ class Behaviours {
     minDistance = 0.0,
     maxDistance = 0.5,
     force = 0.1,
-    position = [0, 0]
+    position = [0, 0, 0]
   }) {
     const { sub, add, clone, mulN, normalize, distSq } = this.v;
     const { getPos, getVel } = this;
